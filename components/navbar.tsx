@@ -17,10 +17,11 @@ const navLinks = [
 ]
 
 export function Navbar() {
-  const { theme, setTheme } = useTheme()
+  const { theme, resolvedTheme, setTheme } = useTheme()
 
   const toggleTheme = () => {
-    setTheme(theme === "dark" ? "light" : "dark")
+    const current = theme === "system" ? resolvedTheme : theme
+    setTheme(current === "dark" ? "light" : "dark")
   }
 
   return (
@@ -38,27 +39,7 @@ export function Navbar() {
             Trevor
           </span>
         </Link>
-
         {/* Desktop Navigation */}
-        <div className="hidden md:flex items-center gap-8">
-          {navLinks.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              className={cn(
-                "relative text-sm font-medium transition-colors hover:text-primary",
-                "after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-gradient-to-r after:from-blue-600 after:to-cyan-500 after:transition-all after:duration-300 hover:after:w-full"
-              )}
-              style={{
-                fontFamily:
-                  '"SF Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif',
-              }}
-            >
-              {link.label}
-            </Link>
-          ))}
-        </div>
-
         {/* Dark Mode Toggle & Mobile Menu */}
         <div className="flex items-center gap-2">
           <Button
@@ -67,7 +48,7 @@ export function Navbar() {
             onClick={toggleTheme}
             aria-label="Toggle theme"
           >
-            {theme === "dark" ? (
+            {(theme === "dark" || (theme === "system" && resolvedTheme === "dark")) ? (
               <Sun className="h-4 w-4" />
             ) : (
               <Moon className="h-4 w-4" />
