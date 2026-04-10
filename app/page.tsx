@@ -6,7 +6,7 @@ import { motion } from "framer-motion"
 import { useCallback, useRef } from "react"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
-import { Monitor, Palette, Rocket, GitBranch, ExternalLink, Hash, Mail, Phone } from "lucide-react"
+import { Monitor, Palette, Rocket, ExternalLink, Mail, Phone } from "lucide-react"
 import { Spotlight } from "@/components/ui/spotlight"
 import { ContainerTextFlip } from "@/components/ui/container-text-flip"
 import { Card } from "@/components/ui/card"
@@ -44,9 +44,7 @@ const skills = [
 ]
 
 const socialLinks = [
-  { icon: GitBranch, href: "#", label: "GitHub" },
-  { icon: ExternalLink, href: "#", label: "LinkedIn" },
-  { icon: Hash, href: "#", label: "Twitter" },
+  { icon: ExternalLink, href: "https://github.com/dzombx", label: "GitHub" },
 ]
 
 export default function Home() {
@@ -163,7 +161,7 @@ export default function Home() {
                 variants={itemVariants}
                 className="flex flex-col sm:flex-row gap-4 justify-start"
               >
-                <Link href="/projects">
+                <Link href="#projects">
                   <Button size="lg" className="w-full sm:w-auto">
                     View My Work
                   </Button>
@@ -171,21 +169,21 @@ export default function Home() {
               </motion.div>
 
               {/* Contact Details */}
-              <motion.div variants={itemVariants} className="flex flex-col gap-3">
+              <motion.div variants={itemVariants} className="flex flex-col gap-4 text-foreground/80">
                 <a
                   href="mailto:trevordzombo@gmail.com"
-                  className="group inline-flex items-center gap-3 text-foreground/80 hover:text-foreground transition-colors w-fit"
+                  className="group inline-flex items-center gap-4 text-foreground/80 hover:text-foreground transition-colors w-fit"
                 >
-                  <Mail className="h-4 w-4 text-muted-foreground group-hover:text-primary transition-colors" />
-                  <span className="text-base sm:text-lg">trevordzombo@gmail.com</span>
+                  <Mail className="h-6 w-6 text-muted-foreground group-hover:text-primary transition-colors" strokeWidth={1.75} />
+                  <span className="text-2xl font-light tracking-tight sm:text-3xl">trevordzombo@gmail.com</span>
                 </a>
 
                 <a
                   href="tel:+254792267516"
-                  className="group inline-flex items-center gap-3 text-foreground/80 hover:text-foreground transition-colors w-fit"
+                  className="group inline-flex items-center gap-4 text-foreground/80 hover:text-foreground transition-colors w-fit"
                 >
-                  <Phone className="h-4 w-4 text-muted-foreground group-hover:text-primary transition-colors" />
-                  <span className="text-base sm:text-lg">+254 792 267516</span>
+                  <Phone className="h-6 w-6 text-muted-foreground group-hover:text-primary transition-colors" strokeWidth={1.75} />
+                  <span className="text-2xl font-light tracking-tight sm:text-3xl">+254 792 267516</span>
                 </a>
               </motion.div>
 
@@ -194,14 +192,16 @@ export default function Home() {
                 {socialLinks.map((social) => {
                   const Icon = social.icon
                   return (
-                    <Link
+                    <a
                       key={social.label}
                       href={social.href}
                       aria-label={social.label}
-                      className="p-2 rounded-lg border border-border/50 hover:border-primary/50 hover:bg-primary/10 transition-all duration-300"
+                      target="_blank"
+                      rel="noreferrer"
+                      className="flex h-16 w-16 items-center justify-center rounded-2xl border border-border/50 bg-background/20 hover:border-primary/50 hover:bg-primary/10 transition-all duration-300"
                     >
-                      <Icon className="w-5 h-5" />
-                    </Link>
+                      <Icon className="h-7 w-7" strokeWidth={1.75} />
+                    </a>
                   )
                 })}
               </motion.div>
@@ -234,8 +234,7 @@ export default function Home() {
                   fill
                   priority
                   sizes="(min-width: 1024px) 550px, 90vw"
-                  className="object-cover hover:scale-[1.02] transition-transform duration-500"
-                  style={{ objectPosition: "center -100px" }}
+                  className="object-cover object-[center_15%] hover:scale-[1.02] transition-transform duration-500"
                 />
               </div>
               </motion.div>
