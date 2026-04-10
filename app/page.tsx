@@ -173,22 +173,21 @@ export default function Home() {
                 <a
                   href="mailto:trevordzombo@gmail.com"
                   className="group inline-flex items-center gap-4 text-foreground/80 hover:text-foreground transition-colors w-fit"
+                  aria-label="Send email to trevordzombo@gmail.com"
                 >
-                  <Mail className="h-6 w-6 text-muted-foreground group-hover:text-primary transition-colors" strokeWidth={1.75} />
-                  <span className="text-2xl font-light tracking-tight sm:text-3xl">trevordzombo@gmail.com</span>
+                  <Mail className="h-5 w-5 text-muted-foreground group-hover:text-primary transition-colors" strokeWidth={1.75} />
+                  <span className="text-lg font-light tracking-tight sm:text-xl">trevordzombo@gmail.com</span>
                 </a>
 
                 <a
                   href="tel:+254792267516"
                   className="group inline-flex items-center gap-4 text-foreground/80 hover:text-foreground transition-colors w-fit"
+                  aria-label="Call +254 792 267516"
                 >
-                  <Phone className="h-6 w-6 text-muted-foreground group-hover:text-primary transition-colors" strokeWidth={1.75} />
-                  <span className="text-2xl font-light tracking-tight sm:text-3xl">+254 792 267516</span>
+                  <Phone className="h-5 w-5 text-muted-foreground group-hover:text-primary transition-colors" strokeWidth={1.75} />
+                  <span className="text-lg font-light tracking-tight sm:text-xl">+254 792 267516</span>
                 </a>
-              </motion.div>
 
-              {/* Social Icons */}
-              <motion.div variants={itemVariants} className="flex gap-4 justify-start">
                 {socialLinks.map((social) => {
                   const Icon = social.icon
                   return (
@@ -198,9 +197,10 @@ export default function Home() {
                       aria-label={social.label}
                       target="_blank"
                       rel="noreferrer"
-                      className="flex h-16 w-16 items-center justify-center rounded-2xl border border-border/50 bg-background/20 hover:border-primary/50 hover:bg-primary/10 transition-all duration-300"
+                      className="group inline-flex items-center gap-4 text-foreground/80 hover:text-foreground transition-colors w-fit"
                     >
-                      <Icon className="h-7 w-7" strokeWidth={1.75} />
+                      <Icon className="h-5 w-5 text-muted-foreground group-hover:text-primary transition-colors" strokeWidth={1.75} />
+                      <span className="text-lg font-light tracking-tight sm:text-xl">github.com/dzombx</span>
                     </a>
                   )
                 })}
